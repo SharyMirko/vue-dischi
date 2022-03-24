@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 disc-conteiner">
+      <div class="row row-cols-2 row-cols-sm-2 row-cols-md-6 disc-conteiner">
           <CardDisc v-for="(item, i) in Disc" :key="i" :img="item.poster" :title="item.title" :year="item.year" :author="item.author" :genere="item.genere" />
       </div>
   </div>

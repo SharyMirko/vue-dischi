@@ -2,8 +2,8 @@
   <div class="col special">
       <img :src="img" alt="">
       <span class="title">{{title}}</span>
-      <span>{{author}}</span>
-      <span>{{year}}</span>
+      <span class="text">{{author}}</span>
+      <span class="text">{{year}}</span>
   </div>
 </template>
 
@@ -39,4 +39,10 @@ export default {
   color: #fff;
   text-align: center;
 }
+  .text {
+    color: #727A7D;
+  }
+  span {
+    margin: .3rem
+  }
 </style>
