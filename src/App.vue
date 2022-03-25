@@ -1,22 +1,32 @@
 <template>
   <div id="app">
-    <HeaderSpotify />
+    <HeaderSpotify @customChange="change($event)" />
+    <ContentSpotify :type="type" />
     <FooterSpotify />
-    <ContentSpotify />
   </div>
 </template>
 
 <script>
-import HeaderSpotify from './components/HeaderSpotify.vue'
 import FooterSpotify from './components/FooterSpotify.vue'
 import ContentSpotify from './components/ContentSpotify.vue'
+import HeaderSpotify from './components/HeaderSpotify.vue'
 
 export default {
   name: 'App',
+  data () {
+    return {
+      type: ''
+    }
+  },
   components: {
-    HeaderSpotify,
     FooterSpotify,
-    ContentSpotify
+    ContentSpotify,
+    HeaderSpotify
+  },
+  methods: {
+    change (i) {
+      this.type = i
+    }
   }
 }
 </script>

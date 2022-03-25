@@ -12,7 +12,7 @@ export default {
   name: 'CardDisc',
   props: {
     author: String,
-    genere: String,
+    genre: String,
     img: String,
     title: String,
     year: String

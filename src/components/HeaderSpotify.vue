@@ -2,19 +2,26 @@
 <header class="container-fluid">
    <div class="logo"><img src="../assets/img/logo-small.svg" alt=""></div>
    <div class="selection">
-       <select name="selection" id="selection">
-           <option value="all">All</option>
-           <option value="all">All</option>
-           <option value="all">All</option>
-           <option value="all">All</option>
+       <select @change="$emit('customChange', genere)" v-model="genere" name="selection" id="selection">
+           <option value="">All</option>
+           <option value="Metal">Metal</option>
+           <option value="Pop">Pop</option>
+           <option value="jazz">Jazz</option>
+           <option value="rock">Rock</option>
        </select>
    </div>
 </header>
 </template>
 
 <script>
-export default {
 
+export default {
+  name: 'HeaderSpotify',
+  data () {
+    return {
+      genere: ''
+    }
+  }
 }
 </script>
 

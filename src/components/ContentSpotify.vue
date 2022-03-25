@@ -1,12 +1,13 @@
 <template>
   <div class="container">
       <div class="row row-cols-2 row-cols-sm-2 row-cols-md-6 disc-conteiner">
-          <CardDisc v-for="(item, i) in Disc" :key="i" :img="item.poster" :title="item.title" :year="item.year" :author="item.author" :genere="item.genere" />
+          <CardDisc v-for="item in display()" :key="item.title" :img="item.poster" :title="item.title" :year="item.year" :author="item.author" :genre="item.genre" />
       </div>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
 import CardDisc from './CardDisc.vue'
 import axios from 'axios'
 
@@ -14,16 +15,28 @@ export default {
   name: 'ContentSpotify',
   data () {
     return {
-      Disc: null
+      Disc: null,
     }
   },
+  props: {
+    type: String
+  },
   components: {
-    CardDisc
+    CardDisc,
+  },
+  methods: {
+    display () {
+     return this.Disc.filter(obj => obj.genre.toLowerCase().includes(this.type.toLowerCase()))
+    }
   },
   created () {
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
       .then((response) => {
+        console.log(response.data)
         this.Disc = response.data.response
+        this.Disc.forEach(disc => {
+          Object.assign(disc, { visible: true })
+        })
       })
   }
 }
