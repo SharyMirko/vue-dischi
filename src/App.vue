@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <HeaderSpotify @customChange="change($event)" />
-    <ContentSpotify :type="type" />
+    <HeaderSpotify :arrType="arrType" :arrAuth="arrAuth" @customChange="change($event)" @author="authorChange($event)" />
+    <ContentSpotify :author="author" :type="type" @allobj="arrAuthPopol($event)" />
     <FooterSpotify />
   </div>
 </template>
@@ -15,7 +15,10 @@ export default {
   name: 'App',
   data () {
     return {
-      type: ''
+      type: '',
+      author: '',
+      arrAuth: [],
+      arrType: []
     }
   },
   components: {
@@ -24,8 +27,21 @@ export default {
     HeaderSpotify
   },
   methods: {
+    authorChange (i) {
+      this.author = i
+    },
     change (i) {
       this.type = i
+    },
+    arrAuthPopol (info) {
+      setTimeout(info.forEach(disc => {
+        this.arrAuth.push(disc.author)
+        if (this.arrType.includes(disc.genre)) {
+          console.log('s')
+        } else {
+          this.arrType.push(disc.genre)
+        }
+      }), 3000)
     }
   }
 }

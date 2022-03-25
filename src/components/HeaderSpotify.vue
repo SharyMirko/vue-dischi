@@ -4,10 +4,11 @@
    <div class="selection">
        <select @change="$emit('customChange', genere)" v-model="genere" name="selection" id="selection">
            <option value="">All</option>
-           <option value="Metal">Metal</option>
-           <option value="Pop">Pop</option>
-           <option value="jazz">Jazz</option>
-           <option value="rock">Rock</option>
+           <option v-for="item in arrType" :key="item" :value="item">{{item}}</option>
+       </select>
+       <select @change="$emit('author', author); " v-model="author" name="authSelection" id="">
+           <option value="">All</option>
+           <option v-for="item in arrAuth" :key="item" :value="item">{{item}}</option>
        </select>
    </div>
 </header>
@@ -19,8 +20,13 @@ export default {
   name: 'HeaderSpotify',
   data () {
     return {
-      genere: ''
+      genere: '',
+      author: ''
     }
+  },
+  props: {
+    arrAuth: Array,
+    arrType: Array
   }
 }
 </script>

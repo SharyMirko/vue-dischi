@@ -17,14 +17,16 @@ export default {
   data () {
     return {
       Disc: null,
+      arrAuth: null
     }
   },
   props: {
-    type: String
+    type: String,
+    author: String
   },
   computed: {
     display () {
-     return this.Disc.filter(obj => obj.genre.toLowerCase().includes(this.type.toLowerCase()))
+     return this.Disc.filter(obj => obj.genre.toLowerCase().includes(this.type.toLowerCase()) || obj.author.toLowerCase().includes(this.author.toLowerCase()))
     }
   },
   components: {
@@ -33,9 +35,8 @@ export default {
   created () {
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
       .then((response) => {
-        console.log(response.data)
         this.Disc = response.data.response
-      })
+      }).then((Disc) => { this.$emit('allobj', this.Disc)})
   }
 }
 </script>
