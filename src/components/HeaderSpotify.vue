@@ -2,11 +2,11 @@
 <header class="container-fluid">
    <div class="logo"><img src="../assets/img/logo-small.svg" alt=""></div>
    <div class="selection">
-       <select @change="$emit('customChange', genere); author = 'loremipsum'; $emit('author', author)" v-model="genere" name="selection" id="selection">
+       <select @change="$emit('customChange', genere)" v-model="genere" name="selection" id="selection">
            <option value="">All</option>
            <option v-for="item in arrType" :key="item" :value="item">{{item}}</option>
        </select>
-       <select @change="$emit('author', author); genere = 'loremipsum'; $emit('customChange', genere)" v-model="author" name="authSelection" id="">
+       <select @change="$emit('author', author)" v-model="author" name="authSelection" id="">
            <option value="">All</option>
            <option v-for="item in arrAuth" :key="item" :value="item">{{item}}</option>
        </select>

@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     display () {
-     return this.Disc.filter(obj => obj.genre.toLowerCase().includes(this.type.toLowerCase()) || obj.author.toLowerCase().includes(this.author.toLowerCase()))
+     return this.Disc.filter(obj => obj.genre.includes(this.type) && obj.author.includes(this.author))
     }
   },
   components: {
